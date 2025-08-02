@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CharityFlow - Register</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="register-body">
+
+  <!-- Navbar -->
+  <nav class="glass-nav">
+    <div class="nav-brand">CharityFlow</div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/login">Login</a></li>
+      <li><a href="/register" class="active">Register</a></li>
+    </ul>
+  </nav>
+
+  <!-- Glass Registration Window -->
+  <div class="register-wrapper">
+    <div class="register-glass">
+      
+      <!-- Image Section -->
+      <div class="register-image">
+        <img src="{% static 'images/register-side.png' %}" alt="Register Side Illustration">
+      </div>
+
+      <!-- Form Section -->
+      <div class="register-form-area">
+        <h2 class="form-title">Join CharityFlow</h2>
+        <form method="POST" action="">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" required>
+          </div>
+          <div class="form-group">
+            <label for="location">Drop Location</label>
+            <input type="text" id="location" name="location" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+          </div>
+          <br>
+          <button type="submit" class="cta-btn interactive">Register</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+
+</body>
+</html>
