@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Donation Submission</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .card-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      animation: slideIn 1s ease-out forwards;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 20px 30px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      width: 150px;
+      font-weight: bold;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(100vw);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .form-container {
+      display: none;
+      margin-top: 40px;
+      animation: fadeIn 0.5s ease-in forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    input[type="text"], input[type="file"] {
+      padding: 10px;
+      margin: 10px;
+      width: 300px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: #0078D7;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: #005fa3;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Select Item Type to Donate</h2>
+
+  <div class="card-container" id="cardContainer">
+    <div class="card" data-type="Clothes">Clothes</div>
+    <div class="card" data-type="Toys">Toys</div>
+    <div class="card" data-type="Stationery">Stationery</div>
+    <div class="card" data-type="Books">Books</div>
+    <div class="card" data-type="Shoes">Shoes</div>
+    <div class="card" data-type="Others">Others</div>
+  </div>
+
+  <div class="form-container" id="formContainer">
+    <h3 id="selectedType"></h3>
+    <form>
+      <input type="text" placeholder="Enter your location" required><br>
+      <input type="file" accept="image/*" required><br>
+      <button type="submit">Submit Donation</button>
+    </form>
+  </div>
+
+  <script>
+    const cards = document.querySelectorAll('.card');
+    const cardContainer = document.getElementById('cardContainer');
+    const formContainer = document.getElementById('formContainer');
+    const selectedType = document.getElementById('selectedType');
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        const type = card.getAttribute('data-type');
+        selectedType.textContent = `You selected: ${type}`;
+        cardContainer.style.display = 'none';
+        formContainer.style.display = 'block';
+      });
+    });
+  </script>
+
+</body>
+</html>
